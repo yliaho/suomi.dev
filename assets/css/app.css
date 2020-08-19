@@ -23,7 +23,15 @@ a {
 main[role="main"] {
 }
 
-input, textarea {
+input {
+  @apply bg-background text-legible p-1 px-2 rounded-sm border border-foreground-faint;
+
+  &::placeholder {
+    @apply text-legible-faintest;
+  }
+}
+
+textarea {
   @apply bg-background text-legible p-1 px-2 rounded-sm border border-foreground-faint;
 
   &::placeholder {
@@ -96,19 +104,19 @@ button {
       @apply text-legible-fainter stroke-current;
     }
   }
-}
 
-.upvote-btn {
-  @apply cursor-pointer !important;
-  &[data-liked] {
-    @apply bg-secondary text-secondary !important;
-    .upvote-svg { 
-      stroke: theme("colors.secondary.strongest")!important;
+  .upvote-btn {
+    @apply cursor-pointer;
+    &[data-liked] {
+      @apply bg-secondary text-secondary ;
+      .upvote-svg { 
+        stroke: theme("colors.secondary.strongest");
+      }
     }
-  }
 
-  > * {
-    pointer-events: none;
+    > * {
+      pointer-events: none;
+    }
   }
 }
 
