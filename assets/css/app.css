@@ -45,20 +45,6 @@ button {
   }
 }
 
-.upvote-btn {
-  @apply cursor-pointer !important;
-  &[data-liked = ""] {
-    @apply bg-secondary text-secondary !important;
-    .upvote-svg { 
-      stroke: theme("colors.secondary.strongest")!important;
-    }
-  }
-
-  > * {
-    pointer-events: none;
-  }
-}
-
 .alerts {
   > div {
     @apply p-2 px-5 font-semibold;
@@ -107,6 +93,20 @@ button {
     .upvote-svg, path.comment-svg {
       @apply text-legible-fainter stroke-current;
     }
+  }
+}
+
+.upvote-btn {
+  @apply cursor-pointer !important;
+  &[data-liked] {
+    @apply bg-secondary text-secondary !important;
+    .upvote-svg { 
+      stroke: theme("colors.secondary.strongest")!important;
+    }
+  }
+
+  > * {
+    pointer-events: none;
   }
 }
 
