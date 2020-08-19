@@ -1,7 +1,7 @@
 # Suomidev 
 
-![Screenshot of suomi.dev frontpage](./github/screenshot1.png)
-![Screenshot of suomi.dev frontpage](./github/screenshot3.png)
+![Screenshot of suomi.dev frontpage](./github/screenshot1.jpg)
+![Screenshot of suomi.dev frontpage](./github/screenshot3.jpg)
 
 > Like Hacker News, but for finns!
 
