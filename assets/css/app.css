@@ -6,6 +6,8 @@
 
 @import "./vars.css";
 
+/* purgecss start ignore */
+
 body {
   @apply bg-background text-legible;
 }
@@ -21,7 +23,7 @@ a {
 main[role="main"] {
 }
 
-input[type="text"], textarea {
+input, textarea {
   @apply bg-background text-legible p-1 px-2 rounded-sm border border-foreground-faint;
 
   &::placeholder {
@@ -134,3 +136,5 @@ article {
     @apply list-disc list-inside;
   }
 }
+
+/* purgecss end ignore */
