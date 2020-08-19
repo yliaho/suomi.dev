@@ -1,18 +1,11 @@
 defmodule Suomidev.Release do
-  @app :suomidev
-
   def migrate do
-    for repo <- repos() do
-      {:ok, _, _} = Ecto.Migrator.with_repo(repo, &Ecto.Migrator.run(&1, :up, all: true))
-    end
-  end
+    {:ok, _} = Application.ensure_all_started(:suomidev)
 
-  def rollback(repo, version) do
-    {:ok, _, _} = Ecto.Migrator.with_repo(repo, &Ecto.Migrator.run(&1, :down, to: version))
-  end
+    path = Application.app_dir(:suomidev, "priv/repo/migrations")
 
-  defp repos do
-    Application.load(@app)
-    Application.fetch_env!(@app, :ecto_repos)
+    Ecto.Migrator.run(Suomidev.Repo, path, :up, all: true)
+
+    :init.stop()
   end
 end
