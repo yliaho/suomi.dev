@@ -1,1 +1,0 @@
-web: /app/bin/$GIGALIXIR_APP_NAME eval "Suomidev.Release.migrate" && /app/bin/$GIGALIXIR_APP_NAME $GIGALIXIR_COMMAND
