@@ -109,7 +109,7 @@ button {
       pointer-events: none;
     }
   }
-  .upvote-btn&[data-liked] {
+  .upvote-btn[data-liked] {
     @apply bg-secondary text-secondary;
     .upvote-svg { 
       stroke: theme("colors.secondary.strongest");
