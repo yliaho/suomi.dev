@@ -22,6 +22,7 @@ config :suomidev, Suomidev.Repo,
   database: "",
   ssl: true,
   pool_size: 9
+  types: Suomidev.PostgresTypes
 
 # ## SSL Support
 #
