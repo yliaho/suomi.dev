@@ -1,0 +1,7 @@
+<button
+  class="upvote-btn"
+  data-submission-id="<%= @submission.id %>"
+  <%= if @submission.current_user_liked, do: "data-liked", else: nil %>
+>
+  <%= SuomidevWeb.SharedView.upvote_svg() %>
+</button>

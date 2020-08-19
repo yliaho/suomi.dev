@@ -1,0 +1,18 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <main class="space-y-4 flex flex-col">
+    <%= if @changeset.action do %>
+      <div class="alert alert-danger">
+        <p>Oops, something went wrong! Please check the errors below.</p>
+      </div>
+    <% end %>
+
+    <%= text_input f, :username, placeholder: "moi"%>
+
+    <section>
+      <%= select(f, :prefers_color_scheme, ["light", "dark"], prompt: "Ulkonäkö") %>
+    </section>
+    <div>
+      <%= submit "Save" %>
+    </div>
+  </main>
+<% end %>

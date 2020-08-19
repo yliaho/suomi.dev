@@ -1,0 +1,41 @@
+<main class="space-y-4">
+  <header class="bg-foreground-faintest p-3 px-4 rounded flex flex-col lg:flex-row justify-between items-start lg:items-end">
+    <hgroup>
+      <h2 class="text-sm text-legible-faintest">Käyttäjä</h2>
+      <h1 class="font-bold text-2xl"><%= @user.username %></h1>
+    </hgroup>
+    <%= if @current_user.id == @user.id do %>
+      <ul class="options">
+        <%= link "Asetukset", to: Routes.user_path(@conn, :edit, @user) %>
+      </ul>
+    <% end %>
+  </header>
+
+  <section class="flex flex-wrap flex-col lg:flex-row space-y-4 lg:space-y-0">
+    <div class="space-y-4 flex-1">
+      <h2 class="font-semibold text-legible-faintest text-sm">Viimeisimmät postaukset</h2>
+      <ul class="space-y-4">
+        <%= for post <- @recent_posts do %>
+          <li>
+            <%= render(SuomidevWeb.PostView, "_post_thing.html", Map.merge(assigns, %{
+              post: post
+            })) %>
+          </li>
+        <% end %>
+      <ul>
+    </div>
+
+    <div class="space-y-4 flex-1">
+      <h2 class="font-semibold text-legible-faintest text-sm">Viimeisimmät kommentit</h2>
+      <ul class="space-y-4">
+        <%= for comment <- @recent_comments do %>
+          <li>
+            <%= render(SuomidevWeb.CommentView, "_comment_thing.html", Map.merge(assigns, %{
+              comment: comment
+            })) %>
+          </li>
+        <% end %>
+      <ul>
+    </div>
+  </section>
+</main>

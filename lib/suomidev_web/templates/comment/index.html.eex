@@ -1,0 +1,24 @@
+<h1>Listing Comments</h1>
+
+<table>
+  <thead>
+    <tr>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for comment <- @comments do %>
+    <tr>
+
+      <td>
+        <span><%= link "Show", to: Routes.comment_path(@conn, :show, comment) %></span>
+        <span><%= link "Edit", to: Routes.comment_path(@conn, :edit, comment) %></span>
+        <span><%= link "Delete", to: Routes.comment_path(@conn, :delete, comment), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Comment", to: Routes.comment_path(@conn, :new) %></span>

@@ -1,0 +1,5 @@
+<section class="alerts <%= @type %> -mt-10 mb-5 text-sm -mx-4">
+  <div class="lg:rounded-b-md">
+    <%= @message %>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+<li class="comment-list">
+  <%= render("_comment_thing.html", assigns) %>
+  <ul class="pl-4 my-3 border-l-2 border-dotted border-foreground-faint replies">
+    <%= if length(@comment.children) > 0 do %>
+      <%= for reply <- @comment.children do %>
+        <%= render("_comment_listing.html", Map.merge(assigns, %{
+          comment: reply
+        })) %>
+      <% end %>
+    <% end %>
+    <%= if length(@comment.children) < @comment.more_comment do %>
+      <%=
+        link "Lisää kommentteja →",
+        to: Routes.post_path(@conn, :show, @post, path: "#{Enum.join(@comment.path.labels, ".")}.#{@comment.id}"),
+        class: ["text-primary font-semibold pb-3 pt-2 text-sm inline-block"]
+      %>
+    <% end %>
+  </ul>
+</li>

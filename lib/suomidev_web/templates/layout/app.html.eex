@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html
+  lang="fi"
+  data-theme="<%= if @current_user, do: @current_user.prefers_color_scheme, else: "light"%>"
+>
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Suomidev · Phoenix Framework</title>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </head>
+  <body class="flex flex-col" style="min-height: 100vh">
+    <header class="bg-foreground-faintest border-b border-foreground-faint mb-10">
+      <section class="container flex justify-between items-center h-10">
+        <h2 class="font-bold">
+          <%= link "suomi.dev", to: Routes.page_path(@conn, :index), class: ["text-legible"] %>
+        </h2>
+        <%= if @current_user do %>
+          <section class="user flex flex-row items-center space-x-2 text-sm">
+            <%= link @current_user.username, to: Routes.user_path(@conn, :show, @current_user) %>
+            <span class="text-foreground-faint">|</span>
+            <span>
+              <%= form_for @conn, Routes.auth_path(@conn, :delete), fn _f -> %>
+                <%= submit "Logout", class: ["unset"] %>
+              <% end %>
+            </span>
+          </section>
+        <% end %>
+      </section>
+    </header>
+      <main role="main" class="container">
+        <%= case get_flash(@conn) do
+          %{"error" => message} ->
+            render("_alert.html", message: message, type: "error")
+          %{"info" => message} ->
+            render("_alert.html", message: message, type: "info")
+          %{} ->
+            nil
+        end %>
+        <%= @inner_content %>
+        <div class="pt-10">
+        </div>
+      </main>
+      <%= render("_footer.html") %>
+  </body>
+</html>

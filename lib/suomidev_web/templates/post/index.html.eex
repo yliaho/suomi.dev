@@ -1,0 +1,17 @@
+<ul class="space-y-4">
+  <%= for post <- @posts do %>
+    <li>
+      <%= render("_post_thing.html", Map.merge(assigns, %{
+        post: post
+      })) %>
+    </li>
+  <% end %>
+</ul>
+<section class="pagination mt-5">
+  <%= if @prev >= 1 do %>
+    <%= link "← Takaisin", to: Routes.post_path(@conn, :index, %{"page" => @prev}), class: ["prev"] %>
+  <% end %>
+  <%= if @has_more do %>
+    <%= link "Lisää →", to: Routes.post_path(@conn, :index, %{"page" => @next}), class: ["next"] %>
+  <% end %>
+</section>

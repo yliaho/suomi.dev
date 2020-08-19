@@ -1,0 +1,28 @@
+<div class="comment-thing">
+  <main class="">
+    <header class="text-sm text-legible-fainter submission-header">
+      <%= render(SuomidevWeb.SharedView, "_upvote.html", Map.merge(assigns, %{submission: @comment})) %>
+      <span class="font-semibold">
+        <%= @comment.user.username %>
+      </span>
+      <time class="text-legible-faintest">
+        <%= Suomidev.TimeAgo.from_now(@comment.inserted_at) %>
+      </time>
+    </header>
+    <article class="py-1">
+      <%= raw(@comment.content_html) %>
+    </article>
+  </main>
+  <ul class="flex flex-row text-sm text-primary font-semibold space-x-2 flex-wrap">
+    <%= link to: Routes.comment_path(@conn, :show, @comment), class: ["font-semibold flex flex-row items-center space-x-1"] do %>
+      <%= SuomidevWeb.SharedView.comment_svg() %>
+      <span>Kommentoi</span>
+    <% end %>
+    <%= if SuomidevWeb.SharedView.is_submission_owner(@current_user, @comment) do %>
+      <%= link to: Routes.comment_path(@conn, :edit, @comment), class: ["font-semibold text-primary-fainter hover:text-primary flex flex-row items-center space-x-1"] do %>
+        <%= SuomidevWeb.SharedView.edit_svg() %>
+        <span>Muokkaa</span>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

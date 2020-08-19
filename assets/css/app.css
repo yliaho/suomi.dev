@@ -1,0 +1,136 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+@import "./vars.css";
+
+body {
+  @apply bg-background text-legible;
+}
+
+.container {
+  @apply max-w-4xl mx-auto px-4;
+}
+
+a {
+  @apply text-primary;
+}
+
+main[role="main"] {
+}
+
+input[type="text"], textarea {
+  @apply bg-background text-legible p-1 px-2 rounded-sm border border-foreground-faint;
+
+  &::placeholder {
+    @apply text-legible-faintest;
+  }
+}
+
+select {
+  @apply bg-background p-1 px-2 rounded-sm border w-32 border-foreground-faint;
+}
+
+button {
+  @apply bg-primary-faintest text-primary-strongest px-5 py-1 border border-primary-faintest font-medium rounded-sm text-center text-sm;
+
+  &.upvote-btn, &.comment-btn, &.unset {
+    all: unset;
+  }
+
+  &.warning {
+    @apply bg-warning-faintest border-warning-faintest text-warning-stronger;
+  }
+}
+
+.upvote-btn {
+  @apply cursor-pointer !important;
+  &[data-liked = ""] {
+    @apply bg-secondary text-secondary !important;
+    .upvote-svg { 
+      stroke: theme("colors.secondary.strongest")!important;
+    }
+  }
+
+  > * {
+    pointer-events: none;
+  }
+}
+
+.alerts {
+  > div {
+    @apply p-2 px-5 font-semibold;
+  }
+
+  &.error div {
+    @apply bg-warning-faintest text-warning-stronger;
+  }
+
+  &.info div {
+    @apply bg-foreground-faintest text-legible;
+  }
+}
+
+.invalid-feedback {
+  @apply text-warning text-sm;
+}
+
+.pagination {
+  @apply flex w-full;
+  a.prev {
+    @apply rounded-l text-left;
+  }
+  a.next {
+    @apply rounded-r text-right;
+  }
+  a {
+    @apply flex-1 text-sm py-2 font-semibold text-legible inline-block;
+  }
+}
+
+.submission-header {
+  @apply flex flex-row items-center mb-1 text-sm text-legible-fainter flex-wrap;
+  > * + * {
+    @apply ml-2 !important;
+  }
+  button.upvote-btn, button.comment-btn {
+    @apply bg-foreground-faintest h-6 px-1 rounded-sm;
+    > a {
+      @apply flex flex-row items-center text-sm font-semibold text-legible-faintest;
+      font-variant-numeric: tabular-nums;
+      > * + * {
+        @apply ml-1;
+      }
+    }
+    .upvote-svg, path.comment-svg {
+      @apply text-legible-fainter stroke-current;
+    }
+  }
+}
+
+.upvote-svg, path.comment-svg, .edit-svg {
+  @apply stroke-current;
+}
+
+.comment-thing {
+  article {
+    @apply text-legible;
+  }
+}
+
+article {
+  @apply text-legible-fainter;
+  word-break: break-all;
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold text-lg text-legible;
+  }
+  > * + * {
+    @apply mt-3;
+  }
+
+  ul {
+    @apply list-disc list-inside;
+  }
+}

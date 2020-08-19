@@ -1,0 +1,26 @@
+<div class="post-thing">
+  <h2 class="font-semibold leading-tight">
+    <%= if @post.url do %>
+      <%= link @post.title, to: @post.url, class: ["text-legible"] %>
+      <span class="uri-host text-sm text-legible-faintest font-normal align-baseline">
+        (<%= URI.parse(@post.url).host %>)
+      </span>
+    <% else %>
+      <%= link @post.title, to: Routes.post_path(@conn, :show, @post), class: ["text-legible"] %>
+    <% end %>
+  </h2>
+  <header class="submission-header mt-1">
+    <%= render(SuomidevWeb.SharedView, "_upvote.html", Map.merge(assigns, %{submission: @post})) %>
+    <%= render(SuomidevWeb.SharedView, "_comment.html", assigns) %>
+    <span class="font-semibold"><%= @post.user.username %></span>
+    <time class="text-legible-faintest">
+      <%= Suomidev.TimeAgo.from_now(@post.inserted_at) %>
+    </time>
+    <%= if SuomidevWeb.SharedView.is_submission_owner(@current_user, @post) do %>
+      <%= link to: Routes.post_path(@conn, :edit, @post), class: ["font-semibold flex items-center space-x-1"] do %>
+        <%= SuomidevWeb.SharedView.edit_svg() %>
+        <span>Muokkaa</span>
+      <% end %>
+    <% end %>
+  </header>
+</div>

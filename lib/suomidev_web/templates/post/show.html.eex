@@ -1,0 +1,47 @@
+<main class="space-y-8">
+  <section class="space-y-3">
+    <%= render("_post_thing.html", assigns) %>
+    <%= if @post.content_html do %>
+      <article class="bg-foreground-faintest p-2 rounded-sm px-4 py-5">
+        <%= raw(@post.content_html) %>
+      </article>
+    <% end %>
+  </section>
+
+  <section>
+    <%= unless assigns[:path] do %>
+      <section class="space-y-3 mb-4">
+        <h3 class="font-semibold">Kommentit <span class="text-legible-fainter">(<%= @post.cache_comment_count %>)</span></h3>
+        <%= render(SuomidevWeb.CommentView, "new.html", Map.merge(assigns, %{
+          changeset: @comment_changeset,
+          parent: @post
+        })) %>
+      </section>
+    <% end %>
+    <%= if assigns[:path] do %>
+      <section class="flex flex-col mb-4">
+        <span class="text-legible-faintest leading-relaxed">
+          Luet yhden kommentin viestiketjua.
+        </span>
+        <%= link "← Palaa takaisin koko ketjuun", to: Routes.post_path(@conn, :show, @post), class: ["text-sm font-semibold"] %>
+      </section>
+    <% end %>
+    <ul class="space-y-4">
+      <%= for comment <- @comments do %>
+        <%= render(SuomidevWeb.CommentView, "_comment_listing.html", Map.merge(assigns, %{
+          comment: comment
+        })) %>
+      <% end %>
+    </ul>
+    <%= if assigns[:prev] do %>
+      <section class="pagination mt-5">
+        <%= if @prev >= 1 do %>
+          <%= link "← Takaisin", to: Routes.post_path(@conn, :show, @post, %{"page" => @prev}), class: ["prev"] %>
+        <% end %>
+        <%= if @has_more do %>
+          <%= link "Lisää →", to: Routes.post_path(@conn, :show, @post, %{"page" => @next}), class: ["next"] %>
+        <% end %>
+      </section>
+    <% end %>
+  </section>
+</main>

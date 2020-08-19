@@ -1,0 +1,29 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger mb-4 text-legible-fainter">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="flex flex-col space-y-3 mb-3">
+    <section class="flex flex-col">
+      <%= text_input f, :title, placeholder: "Title" %>
+      <%= error_tag f, :title %>
+    </section>
+
+    <section class="flex flex-col">
+      <%= text_input f, :url, placeholder: "URL" %>
+      <%= error_tag f, :url %>
+    </section>
+
+    <section class="flex flex-col">
+      <%= textarea f, :content_md, placeholder: "Content", rows: 4 %>
+      <%= error_tag f, :content_md %>
+    </section>
+    <%= hidden_input f, :user_id, value: if @current_user, do: @current_user.id, else: -1 %>
+  </div>
+
+  <div class="flex justify-start">
+    <%= submit "Save", class: ["px-10"] %>
+  </div>
+<% end %>

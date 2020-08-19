@@ -1,0 +1,8 @@
+<footer class="pt-3 text-center flex-1 pb-4 flex flex-col justify-end">
+  <section class="border-t border-foreground-faint pt-4">
+    <hgroup>
+      <h3 class="uppercase text-legible-faintest text-xs font-bold">suomi.dev</h3>
+      <h4 class="text-sm text-legible-fainter">Suomalaista devausta</h4>
+    </hgroup>
+  </section>
+</footer>

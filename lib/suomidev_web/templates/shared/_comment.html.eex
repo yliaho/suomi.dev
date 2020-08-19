@@ -1,0 +1,6 @@
+<button class="comment-btn">
+  <%= link to: Routes.post_path(@conn, :show, @post) do %>
+    <%= SuomidevWeb.SharedView.comment_svg() %>
+    <span><%= @post.cache_comment_count %></span>
+  <% end %>
+</button>

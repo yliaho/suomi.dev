@@ -1,0 +1,11 @@
+<%= render "form.html",
+  Map.put(
+    assigns,
+    :action,
+    Routes.comment_path(
+      @conn,
+      :index,
+      %{parent_id: @parent.id, root_id: @post.id}
+    )
+  )
+%>
