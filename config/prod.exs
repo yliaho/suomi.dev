@@ -21,7 +21,7 @@ config :suomidev, Suomidev.Repo,
   url: {:system, "DATABASE_URL"},
   database: "",
   ssl: true,
-  pool_size: 2
+  pool_size: 9
 
 # ## SSL Support
 #
