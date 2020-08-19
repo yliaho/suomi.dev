@@ -20,7 +20,7 @@ a {
   @apply text-primary;
 }
 
-input {
+input.input {
   @apply bg-background text-legible p-1 px-2 rounded-sm border border-foreground-faint;
 
   &::placeholder {
@@ -104,15 +104,15 @@ button {
 
   .upvote-btn {
     @apply cursor-pointer;
-    &[data-liked] {
-      @apply bg-secondary text-secondary ;
-      .upvote-svg { 
-        stroke: theme("colors.secondary.strongest");
-      }
-    }
 
     > * {
       pointer-events: none;
+    }
+  }
+  .upvote-btn&[data-liked] {
+    @apply bg-secondary text-secondary;
+    .upvote-svg { 
+      stroke: theme("colors.secondary.strongest");
     }
   }
 }
