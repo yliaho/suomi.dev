@@ -1,9 +1,12 @@
 # Suomidev 
 
+> Like Hacker News, but for finns!
+
+Site is live at https://suomi.dev ✅
+
 ![Screenshot of suomi.dev frontpage](./github/screenshot1.jpg)
 ![Screenshot of suomi.dev frontpage](./github/screenshot3.jpg)
 
-> Like Hacker News, but for finns!
 
 Start Phoenix server:
 
