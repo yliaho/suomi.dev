@@ -24,7 +24,7 @@ module.exports = (env, options) => {
         new TerserPlugin({ cache: true, parallel: true, sourceMap: devMode }),
         new OptimizeCSSAssetsPlugin({}),
         new PurgecssPlugin({
-          whitelist: ["input", "upvote-btn", "upvote-btn[data-liked]", "&::placeholder"],
+          whitelist: ["input", "upvote-btn", "upvote-btn[data-liked]", "&::placeholder", "i-am-a-fucking-input-purge-css", "i-am-a-fucking-select-purge-css", "liked"],
           paths: globAll.sync([
             '../lib/suomidev_web/templates/**/*.html.eex',
             '../lib/suomidev_web/views/**/*.ex',
