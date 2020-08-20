@@ -16,6 +16,9 @@
     <%= if @meta_attrs, do: meta_tags(@meta_attrs) %>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+    <%= if Application.get_env(:suomidev, :use_plausible) do %>
+      <script async defer data-domain="suomi.dev" src="https://plausible.io/js/plausible.js"></script>
+    <% end %>
   </head>
   <body class="flex flex-col" style="min-height: 100vh">
     <header class="bg-foreground-faintest border-b border-foreground-faint mb-10">

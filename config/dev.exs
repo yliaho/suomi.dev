@@ -10,6 +10,8 @@ config :suomidev, Suomidev.Repo,
   pool_size: 10,
   types: Suomidev.PostgresTypes
 
+config :suomidev, :use_plausible, false
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
