@@ -6,8 +6,6 @@
 
 @import "./vars.css";
 
-/* purgecss start ignore */
-
 body {
   @apply bg-background text-legible;
 }
@@ -20,7 +18,7 @@ a {
   @apply text-primary;
 }
 
-input {
+.i-am-a-fucking-input-purge-css {
   @apply bg-background text-legible p-1 px-2 rounded-sm border border-foreground-faint;
 
   &::placeholder {
@@ -36,7 +34,7 @@ textarea {
   }
 }
 
-select {
+.i-am-a-fucking-select-purge-css {
   @apply bg-background p-1 px-2 rounded-sm border w-32 border-foreground-faint;
 }
 
@@ -108,11 +106,12 @@ button {
     > * {
       pointer-events: none;
     }
-  }
-  .upvote-btn[data-liked] {
-    @apply bg-secondary text-secondary;
-    .upvote-svg { 
-      stroke: theme("colors.secondary.strongest");
+
+    &.liked {
+      @apply bg-secondary text-secondary;
+      .upvote-svg { 
+        stroke: theme("colors.secondary.strongest");
+      }
     }
   }
 }
@@ -141,5 +140,3 @@ article {
     @apply list-disc list-inside;
   }
 }
-
-/* purgecss end ignore */

@@ -1,5 +1,5 @@
 <button
-  class="upvote-btn"
+  class="upvote-btn <%= if @submission.current_user_liked, do: "liked", else: nil%>"
   data-submission-id="<%= @submission.id %>"
   <%= if @submission.current_user_liked, do: "data-liked", else: nil %>
 >

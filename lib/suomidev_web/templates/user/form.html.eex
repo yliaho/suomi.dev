@@ -6,10 +6,10 @@
       </div>
     <% end %>
 
-    <%= text_input f, :username, placeholder: "moi"%>
+    <%= text_input f, :username, placeholder: "Käyttäjänimi", class: ["i-am-a-fucking-input-purge-css"] %>
 
     <section>
-      <%= select(f, :prefers_color_scheme, ["light", "dark"], prompt: "Ulkonäkö") %>
+      <%= select(f, :prefers_color_scheme, ["light", "dark"], prompt: "Ulkonäkö"), class: ["i-am-a-fucking-select-purge-css"] %>
     </section>
     <div>
       <%= submit "Save" %>

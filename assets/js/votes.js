@@ -11,6 +11,7 @@ function getSubmissionId(target) {
  * @param {HTMLButtonElement} target 
  */
 function toggleDatasetLiked(target) {
+  target.classList.toggle("liked")
   target.toggleAttribute("data-liked")
 }
 

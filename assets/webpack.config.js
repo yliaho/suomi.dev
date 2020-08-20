@@ -29,12 +29,11 @@ module.exports = (env, options) => {
             '../lib/suomidev_web/templates/**/*.html.eex',
             '../lib/suomidev_web/views/**/*.ex',
             "../assets/js/**/*.js",
-            "../assets/css/**/*.css"
           ]),
           extractors: [
             {
               extractor: TailwindExtractor,
-              extensions: ["html", "js", "eex", "ex", "css"],
+              extensions: ["html", "js", "eex", "ex"],
             },
           ],
         }),
