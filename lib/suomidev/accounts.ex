@@ -8,6 +8,8 @@ defmodule Suomidev.Accounts do
 
   alias Suomidev.Accounts.User
 
+  defdelegate authorize(action, user, params), to: Suomidev.Accounts.Policy
+
   def list_users do
     Repo.all(User)
   end

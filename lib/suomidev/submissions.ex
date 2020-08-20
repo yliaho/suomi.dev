@@ -254,12 +254,26 @@ defmodule Suomidev.Submissions do
     |> Repo.update()
   end
 
+  def update_post_submisison(%Submission{} = submission, attrs) do
+    submission
+    |> Submission.edit_post_changeset(
+      Map.merge(attrs, %{
+        "content_html" => Suomidev.Markdown.as_safe_html(attrs["content_md"] || "")
+      })
+    )
+    |> Repo.update()
+  end
+
   def delete_submission(%Submission{} = submission) do
     Repo.delete(submission)
   end
 
   def change_submission(%Submission{} = submission, attrs \\ %{}) do
     Submission.changeset(submission, attrs)
+  end
+
+  def change_post_submission(%Submission{} = submission, attrs \\ %{}) do
+    Submission.edit_post_changeset(submission, attrs)
   end
 
   def gen_comment_tree(comments, parent_id \\ 0) do

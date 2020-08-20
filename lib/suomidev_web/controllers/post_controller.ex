@@ -152,9 +152,10 @@ defmodule SuomidevWeb.PostController do
 
   def edit(%{assigns: %{current_user: %User{}}} = conn, %{"id" => id}) do
     post = Submissions.get_submission!(id)
-    changeset = Submissions.change_submission(post)
+    changeset = Submissions.change_post_submission(post)
 
     conn
+    |> assign(:update, true)
     |> assign(:post, post)
     |> assign(:changeset, changeset)
     |> render("edit.html")
@@ -176,7 +177,7 @@ defmodule SuomidevWeb.PostController do
              conn.assigns.current_user,
              post_params
            ),
-         {:ok, post} <- Submissions.update_submission(post, post_params) do
+         {:ok, post} <- Submissions.update_post_submisison(post, post_params) do
       conn
       |> put_flash(:info, "Post updated successfully.")
       |> redirect(to: Routes.post_path(conn, :show, post))

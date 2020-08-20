@@ -27,6 +27,8 @@
               <% end %>
             </span>
           </section>
+        <% else %>
+          <%= link "Kirjaudu Sisään", to: Routes.page_path(@conn, :signup), class: ["text-sm font-semibold"] %>
         <% end %>
       </section>
     </header>

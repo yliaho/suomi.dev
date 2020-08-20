@@ -6,15 +6,17 @@
   <% end %>
 
   <div class="flex flex-col space-y-3 mb-3">
-    <section class="flex flex-col">
-      <%= text_input f, :title, placeholder: "Title", class: ["i-am-a-fucking-input-purge-css"] %>
-      <%= error_tag f, :title %>
-    </section>
+    <%= unless assigns[:update] do %>
+      <section class="flex flex-col">
+        <%= text_input f, :title, placeholder: "Title", class: ["i-am-a-fucking-input-purge-css"] %>
+        <%= error_tag f, :title %>
+      </section>
 
-    <section class="flex flex-col">
-      <%= text_input f, :url, placeholder: "URL", class: ["i-am-a-fucking-input-purge-css"] %>
-      <%= error_tag f, :url %>
-    </section>
+      <section class="flex flex-col">
+        <%= text_input f, :url, placeholder: "URL", class: ["i-am-a-fucking-input-purge-css"] %>
+        <%= error_tag f, :url %>
+      </section>
+    <% end %>
 
     <section class="flex flex-col">
       <%= textarea f, :content_md, placeholder: "Content", rows: 4 %>

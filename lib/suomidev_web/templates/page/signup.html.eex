@@ -1,0 +1,49 @@
+<main class="flex flex-col md:flex-row md:space-y-0 md:space-x-8 px-6 md:px-0">
+  <section class="flex-1 order-2 md:order-1">
+    <ul class="space-y-6">
+      <li>
+        <h3 class="text-xl font-semibold">Suomalaista devausta</h3>
+        <span class="text-legible-fainter max-w-xs inline-block">
+          Devausta suomalaisittain. Liity keskusteluun.
+        </span>
+      </li>
+      <li>
+        <h3 class="text-xl font-semibold">What happens in suomi.dev...</h3>
+        <span class="text-legible-fainter max-w-xs inline-block">
+          Käyttäjätunnukset ovat täysin anonyymeja. Kirjoita ilman pelkoa että esimiehesi raivostuu.
+        </span>
+      </li>
+      <li>
+        <h3 class="text-xl font-semibold">En oikeen tiedä kuka tätä tarvitsee</h3>
+        <span class="text-legible-fainter max-w-xs inline-block">
+          Mä tein tän vaan siks koska halusin opetella Elixiriä vapaa-ajalla. Lomautuksien myötä aikaa oli reippaasti.
+        </span>
+      </li>
+      <li>
+        <h3 class="text-xl font-semibold">Kevyt, ja nopea UX</h3>
+        <span class="text-legible-fainter max-w-xs inline-block">
+          suomi.dev on kirjoitettu käyttäjä mielessä. Emme lataa megabittejä javascriptiä selaimeesi.
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="flex justify-start order-1 md:order-2 w-full md:max-w-md mb-16 md:mb-0">
+    <div class="w-full max-w-full md:max-w-xs -mt-0 md:-mt-2">
+      <h1 class="text-4xl font-bold mb-12 leading-tight">Liity keskusteluun, pidä hauskaa</h1>
+
+      <%= link to: Routes.auth_path(@conn, :request, "github"), class: ["bg-foreground-fainter text-legible p-3 px-4 inline-block rounded w-full font-medium text-center flex items-center"] do %>
+        <span class="fill-current overflow-visible">
+          <%= SuomidevWeb.SharedView.github_svg(size: 24) %>
+        </span>
+        <span class="flex-1">
+          Jatka GitHub-tunnuksella
+        </span>
+      <% end %>
+
+      <div class="mt-8 text-legible-fainter">
+        Kun painat "jatka", hyväksyt meidän <%= link "tietosuojaselosteen", to: "/", class: ["text-legible font-semibold"] %>.
+      </div>
+    </div>
+  </section>
+</main>

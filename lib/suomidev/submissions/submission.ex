@@ -41,4 +41,9 @@ defmodule Suomidev.Submissions.Submission do
     |> put_change(:type, "comment")
     |> validate_required([:content_md, :parent_id])
   end
+
+  def edit_post_changeset(submisison, attrs) do
+    submisison
+    |> cast(attrs, [:content_md, :content_html])
+  end
 end

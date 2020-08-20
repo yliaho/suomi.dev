@@ -5,4 +5,9 @@ defmodule SuomidevWeb.PageController do
     conn
     |> redirect(to: Routes.post_path(conn, :index))
   end
+
+  def signup(conn, _params) do
+    conn
+    |> render("signup.html")
+  end
 end

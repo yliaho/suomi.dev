@@ -21,6 +21,7 @@ defmodule SuomidevWeb.Router do
     pipe_through(:browser)
 
     get("/", PageController, :index)
+    get("/signup", PageController, :signup)
     resources("/users", UserController)
     resources("/posts", PostController)
     resources("/comments", CommentController)
