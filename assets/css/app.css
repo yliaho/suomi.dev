@@ -20,7 +20,7 @@ a {
   @apply text-primary;
 }
 
-input.input {
+input {
   @apply bg-background text-legible p-1 px-2 rounded-sm border border-foreground-faint;
 
   &::placeholder {
