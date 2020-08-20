@@ -38,7 +38,7 @@ textarea {
   @apply bg-background p-1 px-2 rounded-sm border w-32 border-foreground-faint;
 }
 
-button {
+button, .submit-new-post {
   @apply bg-primary-faintest text-primary-strongest px-5 py-1 border border-primary-faintest font-medium rounded-sm text-center text-sm;
 
   &.upvote-btn, &.comment-btn, &.unset {

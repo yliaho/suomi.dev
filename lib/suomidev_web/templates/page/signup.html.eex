@@ -8,19 +8,19 @@
         </span>
       </li>
       <li>
-        <h3 class="text-xl font-semibold">What happens in suomi.dev...</h3>
+        <h3 class="text-xl font-semibold">Suojele silmiäsi 😎</h3>
         <span class="text-legible-fainter max-w-xs inline-block">
-          Käyttäjätunnukset ovat täysin anonyymeja. Kirjoita ilman pelkoa että esimiehesi raivostuu.
+          Kirjautumalla sisään, voit selata suomi.dev:iä tummalla teemalla vaalean teeman lisäksi.
         </span>
       </li>
       <li>
         <h3 class="text-xl font-semibold">En oikeen tiedä kuka tätä tarvitsee</h3>
         <span class="text-legible-fainter max-w-xs inline-block">
-          Mä tein tän vaan siks koska halusin opetella Elixiriä vapaa-ajalla. Lomautuksien myötä aikaa oli reippaasti.
+          Tein tämän vain siksi, koska halusin opetella Elixiriä vapaa-ajalla. Lomautuksien myötä aikaa oli reippaasti.
         </span>
       </li>
       <li>
-        <h3 class="text-xl font-semibold">Kevyt, ja nopea UX</h3>
+        <h3 class="text-xl font-semibold">Kevyt ja nopea UX</h3>
         <span class="text-legible-fainter max-w-xs inline-block">
           suomi.dev on kirjoitettu käyttäjä mielessä. Emme lataa megabittejä javascriptiä selaimeesi.
         </span>

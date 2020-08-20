@@ -9,6 +9,7 @@ defmodule SuomidevWeb.Router do
     plug(:protect_from_forgery)
     plug(:put_secure_browser_headers)
     plug(SuomidevWeb.Plugs.Session)
+    plug(SuomidevWeb.Plugs.MetaAttrs)
   end
 
   pipeline :api do

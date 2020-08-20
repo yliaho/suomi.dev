@@ -1,3 +1,8 @@
+<%= if @current_user do %>
+  <section class="max-w-full md:max-w-sm mb-6">
+    <%= link "Kirjoita uusi postaus", to: Routes.post_path(@conn, :new), class: ["submit-new-post inline-block w-full"] %>
+  </section>
+<% end %>
 <ul class="space-y-4">
   <%= for post <- @posts do %>
     <li>
