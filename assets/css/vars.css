@@ -22,6 +22,14 @@
   --color-legible-faint: hsl(0, 0%, 20%);
   --color-legible-fainter: hsl(0, 0%, 40%);
   --color-legible-faintest: hsl(0, 0%, 55%);
+
+  --color-warning-default: hsl(344, 94%, 42%);
+  --color-warning-faint: hsl(344, 94%, 52%);
+  --color-warning-fainter: hsl(344, 94%, 62%);
+  --color-warning-faintest: hsl(344, 94%, 72%);
+  --color-warning-strong: hsl(344, 94%, 32%);
+  --color-warning-stronger: hsl(344, 94%, 25%);
+  --color-warning-strongest: hsl(344, 94%, 12%);
 }
 
 [data-theme="dark"] {
