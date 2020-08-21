@@ -8,9 +8,9 @@
         <title><%= @view_module.head(@view_template, assigns).title %></title>
         <%= meta_tags(@view_module.head(@view_template, assigns).meta) %>
     <% end %>
-    <meta content="<%="https://" <> @conn.host <> Routes.static_path(@conn, "/images/dev_moomin.png")%>" title="twitter:image">
+    <meta content="<%="https://" <> @conn.host <> Routes.static_path(@conn, "/images/dev_moomin.png")%>" name="twitter:image">
     <meta content="Moomin character" title="twitter:image:alt">
-    <meta content="<%="https://" <> @conn.host <> Routes.static_path(@conn, "/images/dev_moomin.png")%>" title="og:image">
+    <meta content="<%="https://" <> @conn.host <> Routes.static_path(@conn, "/images/dev_moomin.png")%>" name="og:image">
     <meta content="Moomin character" title="og:image:alt">
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
