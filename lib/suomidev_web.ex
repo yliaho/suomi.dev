@@ -37,6 +37,28 @@ defmodule SuomidevWeb do
       import Phoenix.Controller,
         only: [get_flash: 1, get_flash: 2, view_module: 1, view_template: 1]
 
+      def create_head(opts \\ [title: "suomi.dev", description: "Devausta suomalaisittain. Liity mukaan keskusteluun!"]) do
+        %{
+          title: String.trim(opts[:title]),
+          meta: [
+            # Standard
+            %{name: "description", content: String.trim(opts[:description])},
+
+            # Open Graph
+            %{name: "og:title", content: String.trim(opts[:title])},
+            %{name: "og:description", content: String.trim(opts[:description])},
+            %{name: "og:site_name", content: "suomi.dev"},
+            %{name: "og:locale", content: "fi_FI"},
+
+            # Twitter
+            %{name: "twitter:card", content: "summary"},
+            %{name: "twitter:creator", content: "@Yliaho_"},
+            %{name: "twitter:title", content: String.trim(opts[:title])},
+            %{name: "twitter:description", content: String.trim(opts[:description])}
+          ]
+        }
+      end
+
       # Include shared imports and aliases for views
       unquote(view_helpers())
     end

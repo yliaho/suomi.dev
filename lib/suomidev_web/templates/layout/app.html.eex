@@ -4,16 +4,17 @@
   data-theme="<%= if @current_user, do: @current_user.prefers_color_scheme, else: "light"%>"
 >
   <head>
+    <%= if Keyword.has_key?(@view_module.__info__(:functions), :head) do %>
+        <title><%= @view_module.head(@view_template, assigns).title %></title>
+        <%= meta_tags(@view_module.head(@view_template, assigns).meta) %>
+    <% end %>
+    <meta content="<%="https://" <> @conn.host <> Routes.static_path(@conn, "/images/dev_moomin.png")%>" title="twitter:image">
+    <meta content="Moomin character" title="twitter:image:alt">
+    <meta content="<%="https://" <> @conn.host <> Routes.static_path(@conn, "/images/dev_moomin.png")%>" title="og:image">
+    <meta content="Moomin character" title="og:image:alt">
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>
-      <%= if Keyword.has_key?(@view_module.__info__(:functions), :title), do:
-          @view_module.title(@view_template, assigns),
-        else: nil
-      %> suomi.dev
-    </title>
-    <%= if @meta_attrs, do: meta_tags(@meta_attrs) %>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
     <%= if Application.get_env(:suomidev, :use_plausible) do %>

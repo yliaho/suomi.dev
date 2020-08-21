@@ -1,5 +1,4 @@
 <main class="space-y-8">
-  <% mais = "kok" %>
   <section class="space-y-3">
     <%= render("_post_thing.html", assigns) %>
     <%= if @post.content_html do %>
