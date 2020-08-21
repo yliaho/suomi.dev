@@ -1,4 +1,4 @@
-<h1 class="font-semibold mb-2">Edit Comment</h1>
+<h1 class="font-semibold mb-2">Muokkaa kommenttia</h1>
 
 <%= render "form.html", Map.merge(assigns, %{
   action: Routes.comment_path(@conn, :update, @comment),

@@ -33,7 +33,7 @@
             <span class="text-foreground-faint">|</span>
             <span>
               <%= form_for @conn, Routes.auth_path(@conn, :delete), fn _f -> %>
-                <%= submit "Logout", class: ["unset"] %>
+                <%= submit "Kirjaudu ulos", class: ["unset"] %>
               <% end %>
             </span>
           </section>

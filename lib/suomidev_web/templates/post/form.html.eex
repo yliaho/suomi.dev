@@ -26,6 +26,6 @@
   </div>
 
   <div class="flex justify-start">
-    <%= submit "Save", class: ["px-10"] %>
+    <%= submit "Lähetä", class: ["px-10"] %>
   </div>
 <% end %>

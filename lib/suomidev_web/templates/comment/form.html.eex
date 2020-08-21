@@ -17,8 +17,5 @@
 
   <div class="flex justify-between">
     <%= submit "Kommentoi", class: ["px-10"] %>
-    <%= if assigns[:delete_intention] do %>
-      <%= button "Poista", to: Routes.comment_path(@conn, :show, @comment), class: ["warning px-10"] %>
-    <% end %>
   </div>
 <% end %>
