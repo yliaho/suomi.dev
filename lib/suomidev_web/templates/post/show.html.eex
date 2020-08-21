@@ -2,11 +2,12 @@
   <section class="space-y-3">
     <%= render("_post_thing.html", assigns) %>
     <%= if @post.content_html do %>
-      <article class="bg-foreground-faintest p-2 rounded-sm px-4 py-5">
+      <article role="article" class="bg-foreground-faintest p-2 rounded-sm px-4 py-5">
         <%= raw(@post.content_html) %>
       </article>
     <% end %>
   </section>
+
 
   <section>
     <%= unless assigns[:path] do %>
@@ -26,7 +27,7 @@
         <%= link "← Palaa takaisin koko ketjuun", to: Routes.post_path(@conn, :show, @post), class: ["text-sm font-semibold"] %>
       </section>
     <% end %>
-    <ul class="space-y-4">
+    <ul class="space-y-4" role="list">
       <%= for comment <- @comments do %>
         <%= render(SuomidevWeb.CommentView, "_comment_listing.html", Map.merge(assigns, %{
           comment: comment
@@ -36,10 +37,10 @@
     <%= if assigns[:prev] do %>
       <section class="pagination mt-5">
         <%= if @prev >= 1 do %>
-          <%= link "← Takaisin", to: Routes.post_path(@conn, :show, @post, %{"page" => @prev}), class: ["prev"] %>
+          <%= link "← Takaisin", to: Routes.post_path(@conn, :show, @post, %{"page" => @prev}), class: ["prev"], rel: ["prev"] %>
         <% end %>
         <%= if @has_more do %>
-          <%= link "Lisää →", to: Routes.post_path(@conn, :show, @post, %{"page" => @next}), class: ["next"] %>
+          <%= link "Lisää →", to: Routes.post_path(@conn, :show, @post, %{"page" => @next}), class: ["next"], rel: ["next"] %>
         <% end %>
       </section>
     <% end %>

@@ -1,4 +1,4 @@
-<footer class="pt-3 text-center flex-1 pb-4 flex flex-col justify-end">
+<footer class="pt-3 text-center flex-1 pb-4 flex flex-col justify-end" role="contentinfo">
   <section class="border-t border-foreground-faint pt-4">
     <hgroup>
       <h3 class="uppercase text-legible-faintest text-xs font-bold">suomi.dev</h3>

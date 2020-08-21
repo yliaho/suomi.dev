@@ -1,6 +1,6 @@
-<li class="comment-list">
+<li class="comment-list" role="listitem">
   <%= render("_comment_thing.html", assigns) %>
-  <ul class="pl-4 my-3 border-l-2 border-dotted border-foreground-faint replies">
+  <ul class="pl-4 my-3 border-l-2 border-dotted border-foreground-faint replies" role="list">
     <%= if length(@comment.children) > 0 do %>
       <%= for reply <- @comment.children do %>
         <%= render("_comment_listing.html", Map.merge(assigns, %{

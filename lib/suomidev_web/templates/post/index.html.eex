@@ -3,9 +3,9 @@
     <%= link "Kirjoita uusi postaus", to: Routes.post_path(@conn, :new), class: ["submit-new-post inline-block w-full"] %>
   </section>
 <% end %>
-<ul class="space-y-4">
+<ul class="space-y-4" role="list">
   <%= for post <- @posts do %>
-    <li>
+    <li class="listitem">
       <%= render("_post_thing.html", Map.merge(assigns, %{
         post: post
       })) %>

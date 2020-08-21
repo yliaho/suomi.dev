@@ -9,7 +9,7 @@
         <%= Suomidev.TimeAgo.from_now(@comment.inserted_at) %>
       </time>
     </header>
-    <article class="py-1">
+    <article role="article" class="py-1">
       <%= raw(@comment.content_html) %>
     </article>
   </main>
