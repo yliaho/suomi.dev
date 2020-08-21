@@ -1,5 +1,11 @@
 defmodule SuomidevWeb.Helpers do
-  def rate_limit_by_current_user(conn) do
-    conn.assigns.current_user.id
+  alias Suomidev.Accounts.User
+
+  def get_user_id(%User{id: id}) do
+    id
+  end
+
+  def get_user_id(_) do
+    nil
   end
 end

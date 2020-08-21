@@ -3,11 +3,11 @@ defmodule Suomidev.Submissions.Policy do
 
   alias Suomidev.Accounts.User
 
-  def authorize(:create_post, %User{}, _params) do
+  def authorize(:create, %User{}, _params) do
     true
   end
 
-  def authorize(:update_post, %User{id: current_user_id}, %{"user_id" => post_user_id}) do
+  def authorize(:update, %User{id: current_user_id}, %{"submission" => %{"user_id" => post_user_id}}) do
     if current_user_id == String.to_integer(post_user_id) do
       true
     else
@@ -15,28 +15,8 @@ defmodule Suomidev.Submissions.Policy do
     end
   end
 
-  def authorize(:delete_post, %User{id: current_user_id}, %{"user_id" => post_user_id}) do
+  def authorize(:delete, %User{id: current_user_id}, %{"submission" => %{"user_id" => post_user_id}}) do
     if current_user_id == String.to_integer(post_user_id) do
-      true
-    else
-      false
-    end
-  end
-
-  def authorize(:create_comment, %User{}, _params) do
-    true
-  end
-
-  def authorize(:update_comment, %User{id: current_user_id}, %{"user_id" => comment_user_id}) do
-    if current_user_id == String.to_integer(comment_user_id) do
-      true
-    else
-      false
-    end
-  end
-
-  def authorize(:delete_comment, %User{id: current_user_id}, %{"user_id" => comment_user_id}) do
-    if current_user_id == String.to_integer(comment_user_id) do
       true
     else
       false

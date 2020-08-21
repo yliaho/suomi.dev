@@ -197,8 +197,6 @@ defmodule Suomidev.Submissions do
   Creates post submission
   """
   def create_submission(attrs) do
-    IO.write("POST")
-
     %Submission{}
     |> Submission.changeset(
       Map.put(
@@ -214,8 +212,6 @@ defmodule Suomidev.Submissions do
   Creates comment submission
   """
   def create_submission(parent_id, attrs) do
-    IO.write("COMMENT")
-
     if parent = get_submission(parent_id) do
       path = if parent.path, do: "#{parent.path}.#{parent.id}", else: "#{parent.id}"
 
@@ -239,7 +235,6 @@ defmodule Suomidev.Submissions do
           {:error, changeset}
       end
     else
-      IO.write("NO PARENT?")
       {:no_parent, "parent submissions is unavailable"}
     end
   end

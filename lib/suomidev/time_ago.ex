@@ -10,20 +10,20 @@ defmodule Suomidev.TimeAgo do
     diff = NaiveDateTime.diff(utc_now, naive_datetime)
 
     cond do
-      diff / @year_in_seconds > 1 ->
-        "#{format(diff / @year_in_seconds, "year")} sitten"
+      (interval = diff / @year_in_seconds) > 1 ->
+        "#{format(interval, "year")} sitten"
 
-      diff / @month_in_seconds > 1 ->
-        "#{format(diff / @month_in_seconds, "month")} sitten"
+      (interval = diff / @month_in_seconds) > 1 ->
+        "#{format(interval, "month")} sitten"
 
-      diff / @day_in_seconds > 1 ->
-        "#{format(diff / @day_in_seconds, "day")} sitten"
+      (interval = diff / @day_in_seconds) > 1 ->
+        "#{format(interval, "day")} sitten"
 
-      diff / @hour_in_seconds > 1 ->
-        "#{format(diff / @hour_in_seconds, "hour")} sitten"
+      (interval = diff / @hour_in_seconds) > 1 ->
+        "#{format(interval, "hour")} sitten"
 
-      diff / @minute_in_seconds > 1 ->
-        "#{format(diff / @minute_in_seconds, "minute")} sitten"
+      (interval = diff / @minute_in_seconds) > 1 ->
+        "#{format(interval, "minute")} sitten"
 
       diff / @minute_in_seconds < 1 ->
         "äskettäin"

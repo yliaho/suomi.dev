@@ -8,9 +8,6 @@ defmodule SuomidevWeb.Plugs.Session do
   def call(conn, _params) do
     session = conn |> get_session(:current_user)
 
-    IO.inspect(session)
-
-
     if session do
       case Accounts.get_user(session.id) do
         nil ->
@@ -27,6 +24,16 @@ defmodule SuomidevWeb.Plugs.Session do
     else
       conn
       |> assign(:current_user, nil)
+    end
+  end
+
+  def get_current_user(conn) do
+    with %Accounts.User{id: id} <- conn |> get_session(:current_user),
+      user = %Accounts.User{} <- Accounts.get_user(id) do
+        user
+      else
+        _ ->
+          nil
     end
   end
 end

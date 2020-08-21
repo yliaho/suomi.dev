@@ -4,11 +4,22 @@ defmodule SuomidevWeb.CommentController do
   alias Suomidev.Submissions
   alias Suomidev.Submissions.Submission
   alias Suomidev.Accounts.User
+  alias SuomidevWeb.Helpers
 
   plug Hammer.Plug,
        [
          rate_limit: {"comment:write", 60_000 * 30, 10},
-         by: {:conn, &SuomidevWeb.Helpers.rate_limit_by_current_user/1}
+         by: {:session, :current_user, &Helpers.get_user_id/1}
+       ]
+       when action in [:create, :update, :delete]
+
+  plug Bodyguard.Plug.Authorize,
+       [
+         policy: Submissions,
+         action: &action_name/1,
+         user: {SuomidevWeb.Plugs.Session, :get_current_user},
+         params: {__MODULE__, :get_params},
+         fallback: SuomidevWeb.FallbackController
        ]
        when action in [:create, :update, :delete]
 
@@ -53,40 +64,21 @@ defmodule SuomidevWeb.CommentController do
 
     comment_changeset = Submissions.change_submission(%Submission{})
 
-    with :ok <-
-           Bodyguard.permit(
-             Submissions.Policy,
-             :create_comment,
-             conn.assigns.current_user,
-             comment_params
-           ),
-         {:ok, _comment} <- Submissions.create_submission(parent_id, comment_params) do
-      conn
-      |> put_flash(:info, "Kommentti kirjoitettu onnistuneesti.")
-      |> assign(:post, post)
-      |> assign(:comments, comments)
-      |> assign(:comment_changeset, comment_changeset)
-      |> redirect(to: Routes.post_path(conn, :show, post))
-    else
-      {:error, %Ecto.Changeset{} = changeset} ->
-        IO.inspect(changeset)
+    case Submissions.create_submission(parent_id, comment_params) do
+      {:ok, _comment} ->
+        conn
+        |> put_flash(:info, "Kommentti kirjoitettu onnistuneesti.")
+        |> assign(:post, post)
+        |> assign(:comments, comments)
+        |> assign(:comment_changeset, comment_changeset)
+        |> redirect(to: Routes.post_path(conn, :show, post))
 
+      {:error, %Ecto.Changeset{} = changeset} ->
         conn
         |> put_flash(:error, "Kommenttia ei pysty kirjoittamaan!")
         |> assign(:post, post)
         |> assign(:comments, comments)
         |> assign(:comment_changeset, changeset)
-        |> redirect(to: Routes.post_path(conn, :show, post))
-
-      _ ->
-        conn
-        |> put_flash(
-          :error,
-          "Sinun pitää olla kirjautunut sisään, jotta voit kirjoittaa kommentteja"
-        )
-        |> assign(:post, post)
-        |> assign(:comments, comments)
-        |> assign(:comment_changeset, comment_changeset)
         |> redirect(to: Routes.post_path(conn, :show, post))
     end
   end
@@ -128,50 +120,34 @@ defmodule SuomidevWeb.CommentController do
   def update(conn, %{"id" => id, "submission" => comment_params}) do
     comment = Submissions.get_submission!(id)
 
-    with :ok <-
-           Bodyguard.permit(
-             Submissions.Policy,
-             :update_comment,
-             conn.assigns.current_user,
-             comment_params
-           ),
-         {:ok, comment} <- Submissions.update_submission(comment, comment_params) do
-      conn
-      |> put_flash(:info, "Kommentti muokattu onnistuneesti.")
-      |> redirect(to: Routes.comment_path(conn, :show, comment))
-    else
+    case Submissions.update_submission(comment, comment_params) do
+      {:ok, comment} ->
+        conn
+        |> put_flash(:info, "Kommentti muokattu onnistuneesti.")
+        |> redirect(to: Routes.comment_path(conn, :show, comment))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", comment: comment, changeset: changeset)
-
-      _ ->
-        conn
-        |> put_flash(
-          :error,
-          "Sinun pitää olla kirjautunut sisään, jotta voit muokata kommentteja."
-        )
-        |> redirect(to: Routes.comment_path(conn, :show, comment))
     end
   end
 
   def delete(conn, %{"id" => id}) do
     comment = Submissions.get_submission!(id)
 
-    with :ok <-
-           Bodyguard.permit(
-             Submissions.Policy,
-             :delete_comment,
-             conn.assigns.current_user,
-             comment
-           ),
-         {:ok, _comment} <- Submissions.delete_submission(comment) do
-      conn
-      |> put_flash(:info, "Kommentti poistettu onnistuneesti.")
-      |> redirect(to: Routes.page_path(conn, :index))
-    else
+    case Submissions.delete_submission(comment) do
+      {:ok, _comment} ->
+        conn
+        |> put_flash(:info, "Kommentti poistettu onnistuneesti.")
+        |> redirect(to: Routes.page_path(conn, :index))
+
       _ ->
         conn
         |> put_flash(:error, "Kommenttia ei pysty poistamaan.")
         |> redirect(to: Routes.page_path(conn, :index))
     end
+  end
+
+  def get_params(conn) do
+    conn.params
   end
 end

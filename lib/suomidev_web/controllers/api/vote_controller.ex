@@ -23,10 +23,7 @@ defmodule SuomidevWeb.Api.VoteController do
             |> json(%{"ok" => false, "message" => "submission does not exist"})
         end
 
-      res ->
-        IO.inspect(res)
-        IO.inspect("SHIT HAHAHA LOL WHAT")
-
+      _res ->
         conn
         |> put_status(401)
         |> json(%{"ok" => false})
@@ -41,8 +38,6 @@ defmodule SuomidevWeb.Api.VoteController do
             "user_id" => conn.assigns.current_user.id,
             "submission_id" => id
           })
-
-        IO.inspect(res)
 
         conn
         |> json(%{"ok" => true})
