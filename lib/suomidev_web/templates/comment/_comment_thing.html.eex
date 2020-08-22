@@ -3,7 +3,7 @@
     <header class="text-sm text-legible-fainter submission-header">
       <%= render(SuomidevWeb.SharedView, "_upvote.html", Map.merge(assigns, %{submission: @comment})) %>
       <span class="font-semibold">
-        <%= @comment.user.username %>
+        <%= link @comment.user.username, to: Routes.user_path(@conn, :show, @comment.user), class: ["text-legible-faint"] %>
       </span>
       <time class="text-legible-faintest">
         <%= Suomidev.TimeAgo.from_now(@comment.inserted_at) %>
