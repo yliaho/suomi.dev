@@ -13,7 +13,7 @@ defmodule SuomidevWeb.PostController do
          rate_limit: {"post:write", 60_000 * 30, 10},
          by: {:session, :current_user, &Helpers.get_user_id/1}
        ]
-       when action in [:create, :update, :delete]
+       when action in [:create, :update, :delete, :edit]
 
   plug Bodyguard.Plug.Authorize,
        [
@@ -22,7 +22,7 @@ defmodule SuomidevWeb.PostController do
          user: {SuomidevWeb.Plugs.Session, :get_current_user},
          params: {__MODULE__, :get_params}
        ]
-       when action in [:create, :update, :delete]
+       when action in [:create, :update, :delete, :edit]
 
   def index(conn, %{"page" => page}) do
     pagination =

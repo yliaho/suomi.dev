@@ -11,7 +11,7 @@ defmodule SuomidevWeb.CommentController do
          rate_limit: {"comment:write", 60_000 * 30, 10},
          by: {:session, :current_user, &Helpers.get_user_id/1}
        ]
-       when action in [:create, :update, :delete]
+       when action in [:create, :update, :delete, :edit]
 
   plug Bodyguard.Plug.Authorize,
        [
@@ -21,7 +21,7 @@ defmodule SuomidevWeb.CommentController do
          params: {__MODULE__, :get_params},
          fallback: SuomidevWeb.FallbackController
        ]
-       when action in [:create, :update, :delete]
+       when action in [:create, :update, :delete, :edit]
 
   def index(conn, _params) do
     comments = Submissions.list_submissions()
