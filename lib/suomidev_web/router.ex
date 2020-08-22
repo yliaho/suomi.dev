@@ -23,6 +23,7 @@ defmodule SuomidevWeb.Router do
 
     get("/", PageController, :index)
     get("/signup", PageController, :signup)
+    get("/privacy-policy", PageController, :privacy_policy)
     resources("/users", UserController)
     resources("/posts", PostController)
     resources("/comments", CommentController)

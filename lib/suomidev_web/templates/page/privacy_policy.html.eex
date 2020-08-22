@@ -1,0 +1,40 @@
+<article>
+  <header class="mb-8">
+    <h1 class="font-bold text-4xl">Tietosuojaseloste</h1>
+  </header>
+
+  <section>
+    <ol class="space-y-8">
+      <li class="space-y-2">
+        <h2 class="text-2xl">Kuka omistaa suomi.dev-sivun?</h2>
+        <p>
+          suomi.dev on yhden suomalaisen ohjelmistokehittäjän sivuprojekti.
+        </p>
+        <ul class="list-none">
+          <li class="font-semibold">Joonas Yliaho</li>
+          <li><a href="mailto:joonas.yliaho@gmail.com">joonas.yliaho@gmail.com</a></li>
+        </ul>
+      </li>
+      </li class="space-y-2">
+        <h2 class="text-2xl">Mitä tapahtuu kun rekistöröin tunnuksen?</h2>
+        <p>
+          Kun kirjaudut sisään GitHub tunnuksellasi ja hyväksyt tunnistuksen suomi.dev sivulle, annat sivustolle mahdollisuuden lukea GitHub profiilisi perustietoja.
+        </p>
+        <p>
+          Tästä datasta, käyttäjänimi- ja sähköpostisi tallennetaan suomi.dev tietokantaan. Kun tunnistus on tapahtunut onnistuneesti, käyttäjänimesi GitHubista määräytyy suomi.dev sivuston käyttäjäprofiilisi käyttäjänimeksi, joka näkyy julkisesti kaikille.
+          Käyttäjänimen voi vaihtaa profiilisivustasi jälkeenpäin.
+        </p>
+
+        <p>
+          Tallennamme rekistöröityessä tai kirjautuessa uudestaan sisään sivustolle, evästeitä jolla mahdollistat suomi.dev:in tunnistaa selaimellasi tehdyt kutsut käyttäjäprofiiliisi. Tunnistuksen avulla pystyt kirjoittamaan uusia "postauksia" tai "kommentteja" sivustolle.
+        </p>
+      </li>
+      </li class="space-y-2">
+        <h2 class="text-2xl">Käyttääkö suomi.dev Google Analytics- tai muuta kävijäseurantaan tarkoitettua sovellusta?</h2>
+        <p>
+          Suomi.dev ei käytä Google Analytics ohjelmaa. Identifioivan käyttäjäseurantasovelluksen sijaan, suomi.dev käyttää <a rel="nofollow" href="https://plausible.io">Plausible</a> sovellusta, joka ei kerää yksityistietoja vierailukäyttäytymisestäsi.
+        </p>
+      </li>
+    </ol>
+  </section>
+</article>

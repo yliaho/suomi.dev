@@ -10,4 +10,9 @@ defmodule SuomidevWeb.PageController do
     conn
     |> render("signup.html")
   end
+
+  def privacy_policy(conn, _params) do
+    conn
+    |> render("privacy_policy.html")
+  end
 end

@@ -42,7 +42,7 @@
       <% end %>
 
       <div class="mt-8 text-legible-fainter">
-        Kun painat "jatka", hyväksyt meidän <%= link "tietosuojaselosteen", to: "/", class: ["text-legible font-semibold"] %>.
+        Kun painat "jatka", hyväksyt meidän <%= link "tietosuojaselosteen", to: Routes.page_path(@conn, :privacy_policy), class: ["text-legible font-semibold"] %>.
       </div>
     </div>
   </section>
