@@ -1,11 +1,9 @@
 <%= render "form.html",
-  Map.put(
+  Map.merge(
     assigns,
-    :action,
-    Routes.comment_path(
-      @conn,
-      :index,
-      %{parent_id: @parent.id, root_id: @post.id}
-    )
+    %{
+      action: Routes.comment_path(@conn, :index, %{parent_id: @parent.id, root_id: @post.id}),
+      user: assigns.current_user && assigns.current_user.id
+    }
   )
 %>

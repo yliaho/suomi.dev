@@ -1,3 +1,6 @@
 <h1 class="mb-3 font-bold">Muokkaa postausta</h1>
 
-<%= render "form.html", Map.put(assigns, :action, Routes.post_path(@conn, :update, @post)) %>
+<%= render "form.html", Map.merge(assigns, %{
+  action: Routes.post_path(@conn, :update, @post),
+  user: @changeset.data.user_id
+}) %>

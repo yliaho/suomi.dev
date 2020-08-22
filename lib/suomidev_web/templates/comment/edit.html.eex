@@ -2,5 +2,6 @@
 
 <%= render "form.html", Map.merge(assigns, %{
   action: Routes.comment_path(@conn, :update, @comment),
+  user: @changeset.data.user_id,
   delete_intention: true
 }) %>

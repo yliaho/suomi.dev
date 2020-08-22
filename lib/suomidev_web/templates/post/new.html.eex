@@ -1,3 +1,6 @@
 <h1 class="mb-4 font-bold">New Post</h1>
 
-<%= render "form.html", Map.put(assigns, :action, Routes.post_path(@conn, :create)) %>
+<%= render "form.html", Map.merge(assigns, %{
+  action: Routes.post_path(@conn, :create),
+  user: assigns.current_user && assigns.current_user.id
+}) %>

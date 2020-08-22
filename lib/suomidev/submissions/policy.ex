@@ -8,6 +8,7 @@ defmodule Suomidev.Submissions.Policy do
   end
 
   def authorize(:update, %User{id: current_user_id}, %{"submission" => %{"user_id" => post_user_id}}) do
+    IO.inspect([current_user_id, String.to_integer(post_user_id), current_user_id == String.to_integer(post_user_id)])
     if current_user_id == String.to_integer(post_user_id) do
       true
     else
