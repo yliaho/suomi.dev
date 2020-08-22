@@ -5,7 +5,7 @@
 Site is live at https://suomi.dev ✅
 
 ![Screenshot of suomi.dev frontpage](./github/screenshot1.jpg)
-![Screenshot of suomi.dev frontpage](./github/screenshot3.jpg)
+![Screenshot of suomi.dev frontpage](./github/screenshot2.jpg)
 
 
 Start Phoenix server:
