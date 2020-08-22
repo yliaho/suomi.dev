@@ -32,7 +32,7 @@
     <div class="w-full max-w-full md:max-w-xs -mt-0 md:-mt-2">
       <h1 class="text-4xl font-bold mb-12 leading-tight">Liity keskusteluun, pidä hauskaa</h1>
 
-      <%= link to: Routes.auth_path(@conn, :request, "github"), class: ["bg-foreground-fainter text-legible p-3 px-4 inline-block rounded w-full font-medium text-center flex items-center"] do %>
+      <%= link to: Routes.auth_path(@conn, :request, "github"), class: ["bg-foreground-fainter text-legible p-3 px-4 inline-block rounded w-full font-medium text-center flex items-center"], rel: ["nofollow"] do %>
         <span class="fill-current overflow-visible">
           <%= SuomidevWeb.SharedView.github_svg(size: 24) %>
         </span>
