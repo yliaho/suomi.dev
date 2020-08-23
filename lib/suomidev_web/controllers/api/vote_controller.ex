@@ -2,10 +2,11 @@ defmodule SuomidevWeb.Api.VoteController do
   use SuomidevWeb, :controller
 
   alias Suomidev.Votes
+  alias SuomidevWeb.Helpers
 
   plug Hammer.Plug,
     rate_limit: {"like:write", 60_000 * 30, 10},
-    by: {:conn, &SuomidevWeb.Helpers.rate_limit_by_current_user/1}
+    by: {:session, :current_user, &Helpers.get_user_id/1}
 
   def vote_submission(conn, %{"id" => id} = params) do
     case Bodyguard.permit(Votes, :create_like, conn.assigns.current_user, params) do
