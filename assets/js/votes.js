@@ -26,9 +26,25 @@ function isOk(res) {
   return res.ok
 }
 
+/**
+ * @returns {HTMLElement} 
+ */
+function getVotesAmountNode(target) {
+  return target.querySelector('span')
+}
+
+function incVotesAmountNodeTextContent(target, value) {
+  const amount = getVotesAmountNode(target)
+
+  if (amount) {
+    amount.textContent = parseInt(amount.textContent) + value
+  }
+}
+
 function likeSubmission(target) {
   const submissionId = getSubmissionId(target)
   toggleDatasetLiked(target)
+  incVotesAmountNodeTextContent(target, 1)
 
   PhxRequest.post(`/api/votes/${submissionId}`, null).then(res => {
     if (!isOk(res)) {
@@ -36,12 +52,14 @@ function likeSubmission(target) {
     }
   }).catch(() => {
     toggleDatasetLiked(target)
+    incVotesAmountNodeTextContent(target, -1)
   })
 }
 
 function unlikeSubmission(target) {
   const submissionId = getSubmissionId(target)
   toggleDatasetLiked(target)
+  incVotesAmountNodeTextContent(target, -1)
 
   PhxRequest.delete(`/api/votes/${submissionId}`, null).then(res => {
     if (!isOk(res)) {
@@ -49,6 +67,7 @@ function unlikeSubmission(target) {
     }
   }).catch(() => {
     toggleDatasetLiked(target)
+    incVotesAmountNodeTextContent(target, 1)
   })
 }
 

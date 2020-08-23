@@ -4,4 +4,7 @@
   <%= if @submission.current_user_liked, do: "data-liked", else: nil %>
 >
   <%= SuomidevWeb.SharedView.upvote_svg() %>
+  <%= if assigns[:current_user] && @current_user.id == @submission.user_id do %>
+    <span><%=@submission.cache_like_count %></span>
+  <% end %>
 </button>

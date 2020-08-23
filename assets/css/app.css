@@ -87,9 +87,9 @@ button, .submit-new-post {
     @apply ml-2 !important;
   }
   button.upvote-btn, button.comment-btn {
-    @apply bg-foreground-faintest h-6 px-1 rounded-sm;
-    > a {
-      @apply flex flex-row items-center text-sm font-semibold text-legible-faintest;
+    @apply flex items-center justify-between bg-foreground-faintest h-6 px-1 rounded-sm text-sm font-semibold;
+    > * {
+      @apply flex flex-row items-center;
       font-variant-numeric: tabular-nums;
       > * + * {
         @apply ml-1;
@@ -100,15 +100,25 @@ button, .submit-new-post {
     }
   }
 
+  .comment-btn {
+    a {
+      @apply text-legible-faintest;
+    }
+  }
+
   .upvote-btn {
-    @apply cursor-pointer;
+    @apply cursor-pointer text-legible-faintest;
 
     > * {
       pointer-events: none;
     }
 
+    > * + * {
+      @apply ml-1;
+    }
+
     &.liked {
-      @apply bg-secondary text-secondary;
+      @apply bg-secondary text-secondary-strongest;
       .upvote-svg { 
         stroke: theme("colors.secondary.strongest");
       }
