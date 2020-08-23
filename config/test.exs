@@ -6,8 +6,8 @@ use Mix.Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :suomidev, Suomidev.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "suomidev",
+  password: "suomidev",
   database: "suomidev_test#{System.get_env("MIX_TEST_PARTITION")}",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
@@ -19,4 +19,4 @@ config :suomidev, SuomidevWeb.Endpoint,
   server: false
 
 # Print only warnings and errors during test
-config :logger, level: :warn
+config :logger, level: :debug

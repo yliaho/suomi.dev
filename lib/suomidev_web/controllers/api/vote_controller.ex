@@ -9,6 +9,8 @@ defmodule SuomidevWeb.Api.VoteController do
     by: {:session, :current_user, &Helpers.get_user_id/1}
 
   def vote_submission(conn, %{"id" => id} = params) do
+    IO.inspect(id)
+    IO.inspect(conn.assigns)
     case Bodyguard.permit(Votes, :create_like, conn.assigns.current_user, params) do
       :ok ->
         case Votes.create_like(%{
