@@ -1,6 +1,6 @@
 # Suomidev 
 
-> Like Hacker News, but for finns!
+> Like Hacker News, but for Finns.
 
 Site is live at https://suomi.dev ✅
 
