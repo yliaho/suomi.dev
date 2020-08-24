@@ -12,7 +12,8 @@ config :ueberauth, Ueberauth,
     github:
       {Ueberauth.Strategy.Github,
        [
-         default_scope: "read:user"
+         default_scope: "read:user",
+         allow_private_emails: true
        ]}
   ]
 
