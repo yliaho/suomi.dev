@@ -1,0 +1,8 @@
+<time class="text-legible-faintest">
+  <%= Suomidev.TimeAgo.from_now(@submission.inserted_at) %>
+  <%= if NaiveDateTime.diff(@submission.updated_at, @submission.inserted_at) > (60 * 5) do %>
+    <time class="edited cursor-default" title="Muokattu <%= Suomidev.TimeAgo.from_now(@submission.updated_at) %>">
+      *
+    </time>
+  <% end  %>
+</time>

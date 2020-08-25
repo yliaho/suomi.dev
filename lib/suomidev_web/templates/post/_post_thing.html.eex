@@ -13,9 +13,7 @@
     <%= render(SuomidevWeb.SharedView, "_upvote.html", Map.merge(assigns, %{submission: @post})) %>
     <%= render(SuomidevWeb.SharedView, "_comment.html", assigns) %>
     <span class="font-semibold"><%= link @post.user.username, to: Routes.user_path(@conn, :show, @post.user), class: ["text-legible-faint"] %></span>
-    <time class="text-legible-faintest">
-      <%= Suomidev.TimeAgo.from_now(@post.inserted_at) %>
-    </time>
+    <%= render(SuomidevWeb.SharedView, "_submission_time.html", Map.merge(assigns, %{submission: @post})) %>
     <%= if SuomidevWeb.SharedView.is_submission_owner(@current_user, @post) do %>
       <%= link to: Routes.post_path(@conn, :edit, @post), class: ["font-semibold flex items-center space-x-1"] do %>
         <%= SuomidevWeb.SharedView.edit_svg() %>
